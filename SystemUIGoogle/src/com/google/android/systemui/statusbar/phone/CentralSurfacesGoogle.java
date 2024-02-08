@@ -73,6 +73,7 @@ import com.android.systemui.settings.UserTracker;
 import com.android.systemui.recents.ScreenPinningRequest;
 import com.android.systemui.settings.brightness.BrightnessSliderController;
 import com.android.systemui.shade.CameraLauncher;
+import com.android.systemui.shade.NotificationPanelViewController;
 import com.android.systemui.shade.NotificationShadeWindowView;
 import com.android.systemui.shade.NotificationShadeWindowViewController;
 import com.android.systemui.shade.ShadeController;
@@ -204,6 +205,7 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
             ShadeLogger shadeLogger,
             @UiBackground Executor uiBgExecutor,
             ShadeSurface shadeSurface,
+            NotificationPanelViewController newNotificationPanelViewController,
             NotificationMediaManager notificationMediaManager,
             NotificationLockscreenUserManagerGoogle notificationLockscreenUserManagerGoogle,
             NotificationRemoteInputManager remoteInputManager,
@@ -265,6 +267,7 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
             LockscreenShadeTransitionController lockscreenShadeTransitionController,
             FeatureFlags featureFlags,
             KeyguardUnlockAnimationController keyguardUnlockAnimationController,
+            @Main Handler mainHandler,
             @Main DelayableExecutor delayableExecutor,
             @Main MessageRouter messageRouter,
             WallpaperManager wallpaperManager,
@@ -295,7 +298,7 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
                 headsUpManagerPhone, dynamicPrivacyController, falsingManager, falsingCollector,
                 broadcastDispatcher, notificationGutsManager, notificationLogger, notificationInterruptStateProvider,
                 shadeExpansionStateManager, keyguardViewMediator,
-                displayMetrics, metricsLogger, shadeLogger, uiBgExecutor, shadeSurface, notificationMediaManager,
+                displayMetrics, metricsLogger, shadeLogger, uiBgExecutor, shadeSurface, newNotificationPanelViewController, notificationMediaManager,
                 notificationLockscreenUserManagerGoogle, remoteInputManager, quickSettingsController,
                 userSwitcherController, batteryController, colorExtractor, screenLifecycle,
                 wakefulnessLifecycle, powerInteractor, statusBarStateController,
@@ -315,7 +318,7 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
                 notificationIconAreaController, brightnessSliderFactory,
                 screenOffAnimationController, wallpaperController, ongoingCallController,
                 statusBarHideIconsForBouncerManager, lockscreenShadeTransitionController,
-                featureFlags, keyguardUnlockAnimationController, delayableExecutor,
+                featureFlags, keyguardUnlockAnimationController, mainHandler, delayableExecutor,
                 messageRouter, wallpaperManager, startingSurfaceOptional, activityLaunchAnimator,
                 jankMonitor, deviceStateManager, wiredChargingRippleController,
                 dreamManager, cameraLauncherLazy, lightRevealScrimViewModelLazy, lightRevealScrim, alternateBouncerInteractor,
